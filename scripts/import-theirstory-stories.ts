@@ -112,7 +112,8 @@ function buildOutputFileName(
   const storyTitle = typeof story?.title === 'string' ? story.title : storyId;
   const safeTitle = slugifyFilePart(storyTitle);
 
-  return `ts-portal-${safeTitle}-${publishFormat}.json`;
+  // Include the story ID so stories that share a title don't collide on disk.
+  return `ts-portal-${safeTitle}-${publishFormat}-${storyId}.json`;
 }
 
 function printHelp(): void {
