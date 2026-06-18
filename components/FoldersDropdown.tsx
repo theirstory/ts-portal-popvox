@@ -20,7 +20,7 @@ import { useSemanticSearchStore } from '@/app/stores/useSemanticSearchStore';
 import { SchemaTypes } from '@/types/weaviate';
 import { returnedFields } from './SearchBox';
 import { useThreshold } from '@/app/stores/useThreshold';
-import { PAGINATION_ITEMS_PER_PAGE } from '@/app/constants';
+import { STORIES_PAGE_SIZE } from '@/app/constants';
 import { SearchType } from '@/types/searchType';
 
 export const FoldersDropdown = ({ compact = false }: { compact?: boolean }) => {
@@ -87,7 +87,7 @@ export const FoldersDropdown = ({ compact = false }: { compact?: boolean }) => {
           'folder_name',
           'folder_path',
         ],
-        PAGINATION_ITEMS_PER_PAGE,
+        STORIES_PAGE_SIZE,
         0,
       );
       return;

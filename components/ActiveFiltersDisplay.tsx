@@ -7,7 +7,7 @@ import { getNerColor, getNerDisplayName } from '@/config/organizationConfig';
 import { colors } from '@/lib/theme';
 import { SearchType } from '@/types/searchType';
 import { SchemaTypes } from '@/types/weaviate';
-import { PAGINATION_ITEMS_PER_PAGE } from '@/app/constants';
+import { STORIES_PAGE_SIZE } from '@/app/constants';
 import { returnedFields } from './SearchBox';
 import { useThreshold } from '@/app/stores/useThreshold';
 import useLayoutState from '@/app/stores/useLayout';
@@ -60,7 +60,7 @@ export const ActiveFiltersDisplay: React.FC = () => {
           'collection_name',
           'collection_description',
         ],
-        PAGINATION_ITEMS_PER_PAGE,
+        STORIES_PAGE_SIZE,
         0,
       );
       return;

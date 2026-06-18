@@ -20,7 +20,7 @@ import { useSemanticSearchStore } from '@/app/stores/useSemanticSearchStore';
 import { SchemaTypes } from '@/types/weaviate';
 import { returnedFields } from './SearchBox';
 import { useThreshold } from '@/app/stores/useThreshold';
-import { PAGINATION_ITEMS_PER_PAGE } from '@/app/constants';
+import { STORIES_PAGE_SIZE } from '@/app/constants';
 import { SearchType } from '@/types/searchType';
 
 export type CollectionsDropdownOption = { id: string; name: string; description?: string };
@@ -107,7 +107,7 @@ export const CollectionsDropdown = ({
           'collection_name',
           'collection_description',
         ],
-        PAGINATION_ITEMS_PER_PAGE,
+        STORIES_PAGE_SIZE,
         0,
       );
       return;
