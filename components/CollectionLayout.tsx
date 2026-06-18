@@ -12,7 +12,6 @@ import { GridView } from './GridView';
 import { SearchTable } from './SearchTable';
 import { SearchBox } from './SearchBox';
 import { ActiveFiltersDisplay } from './ActiveFiltersDisplay';
-import { Pagination } from './Pagination';
 import { NoInterviewsMessage } from './NoInterviewsMessage';
 import { colors } from '@/lib/theme';
 import useLayoutState from '@/app/stores/useLayout';
@@ -20,7 +19,7 @@ import useLayoutState from '@/app/stores/useLayout';
 export default function CollectionLayout() {
   const { loading: semanticSearchLoading, stories, result, currentPage, hasSearched } = useSemanticSearchStore();
   const { setTopBarCollapsedAuto } = useLayoutState();
-  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('grid');
 
   const storiesTestimonies = stories as WeaviateReturn<Testimonies, any> | null;
   const results = result?.objects || [];
@@ -126,9 +125,6 @@ export default function CollectionLayout() {
                     },
                   }}>
                   {viewMode === 'list' ? <ListView /> : <GridView />}
-                </Box>
-                <Box sx={{ mt: { xs: 1, md: 'auto' } }}>
-                  <Pagination />
                 </Box>
               </>
             )}

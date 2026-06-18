@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useSemanticSearchStore } from '@/app/stores/useSemanticSearchStore';
 import { SchemaTypes } from '@/types/weaviate';
-import { PAGINATION_ITEMS_PER_PAGE } from '@/app/constants';
+import { STORIES_PAGE_SIZE } from '@/app/constants';
 import CollectionLayout from './CollectionLayout';
 
 const STORIES_RETURN_PROPERTIES = [
@@ -47,7 +47,7 @@ export const RecordingsPage = () => {
     setCurrentPage(1);
     setSelectedFolderIds([]);
     setSelectedCollectionIds(collectionId ? [collectionId] : []);
-    getAllStories(SchemaTypes.Testimonies, [...STORIES_RETURN_PROPERTIES], PAGINATION_ITEMS_PER_PAGE, 0);
+    getAllStories(SchemaTypes.Testimonies, [...STORIES_RETURN_PROPERTIES], STORIES_PAGE_SIZE, 0);
   }, [
     collectionId,
     clearSearch,
