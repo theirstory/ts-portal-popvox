@@ -50,3 +50,6 @@ tsconfig.tsbuildinfo
 .yarn/install-state.gz
 .yarn/build-state.yml
 .pnp.*.env.cloud
+
+# Generated Weaviate data backup (created by scripts/deploy/export-weaviate-data.sh)
+weaviate-data.tar.gz
