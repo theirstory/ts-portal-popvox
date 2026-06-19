@@ -47,10 +47,12 @@ export function IndexesHorizontalView({
   stories,
   chaptersByStoryId,
   searchQuery = '',
+  showCollectionLabel = true,
 }: {
   stories: IndexesStory[];
   chaptersByStoryId: Record<string, IndexChapter[]>;
   searchQuery?: string;
+  showCollectionLabel?: boolean;
 }) {
   return (
     <Box
@@ -103,11 +105,13 @@ export function IndexesHorizontalView({
                   <Typography variant="subtitle2" fontWeight={600} component="span" sx={{ wordBreak: 'break-word' }}>
                     {highlightSearchText(story.interview_title, searchQuery)}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary" display="block">
-                    {story.folder_name
-                      ? `${story.collection_name || story.collection_id} / ${story.folder_name}`
-                      : story.collection_name || story.collection_id}
-                  </Typography>
+                  {showCollectionLabel && (
+                    <Typography variant="caption" color="text.secondary" display="block">
+                      {story.folder_name
+                        ? `${story.collection_name || story.collection_id} / ${story.folder_name}`
+                        : story.collection_name || story.collection_id}
+                    </Typography>
+                  )}
                   <Typography variant="caption" color="text.secondary" display="block">
                     {durationFormatHandler(story.interview_duration)} — {chapters.length} chapter
                     {chapters.length !== 1 ? 's' : ''}

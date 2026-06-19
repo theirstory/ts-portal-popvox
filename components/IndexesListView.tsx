@@ -48,10 +48,12 @@ export function IndexesListView({
   stories,
   chaptersByStoryId,
   searchQuery = '',
+  showCollectionLabel = true,
 }: {
   stories: IndexesStory[];
   chaptersByStoryId: Record<string, IndexChapter[]>;
   searchQuery?: string;
+  showCollectionLabel?: boolean;
 }) {
   return (
     <Box
@@ -92,11 +94,13 @@ export function IndexesListView({
                     <Typography variant="h6" fontWeight={600} sx={{ mb: 0.5 }} component="span">
                       {highlightSearchText(story.interview_title, searchQuery)}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {story.folder_name
-                        ? `${story.collection_name || story.collection_id} / ${story.folder_name}`
-                        : story.collection_name || story.collection_id}
-                    </Typography>
+                    {showCollectionLabel && (
+                      <Typography variant="body2" color="text.secondary">
+                        {story.folder_name
+                          ? `${story.collection_name || story.collection_id} / ${story.folder_name}`
+                          : story.collection_name || story.collection_id}
+                      </Typography>
+                    )}
                     <Typography variant="body2" color="text.secondary">
                       {durationFormatHandler(story.interview_duration)} — {chapters.length} chapter
                       {chapters.length !== 1 ? 's' : ''}

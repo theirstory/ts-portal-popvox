@@ -1119,12 +1119,14 @@ export default function IndexesPage() {
                         stories={filteredStories}
                         chaptersByStoryId={filteredChaptersByStoryId}
                         searchQuery={searchQuery}
+                        showCollectionLabel={collectionOptions.length > 1}
                       />
                     ) : (
                       <IndexesHorizontalView
                         stories={filteredStories}
                         chaptersByStoryId={filteredChaptersByStoryId}
                         searchQuery={searchQuery}
+                        showCollectionLabel={collectionOptions.length > 1}
                       />
                     )}
                   </Box>
