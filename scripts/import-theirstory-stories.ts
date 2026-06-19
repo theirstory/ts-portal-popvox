@@ -92,12 +92,21 @@ function slugifyFilePart(input: string): string {
 }
 
 function extractMuxPlaybackId(videoUrl: string): string {
-  const match = videoUrl.match(/https?:\/\/stream\.mux\.com\/([^/]+)\//i);
+  // Matches the playback id in both rendition URLs (…/<id>/highest.mp4, …/<id>/audio.m4a)
+  // and HLS URLs (…/<id>.m3u8).
+  const match = videoUrl.match(/https?:\/\/stream\.mux\.com\/([^/.?]+)[/.]/i);
   if (!match?.[1]) {
     throw new Error(`Could not extract mux_playback_id from videoURL: ${videoUrl}`);
   }
 
   return match[1];
+}
+
+// Use the HLS manifest URL rather than a static rendition (highest.mp4 / audio.m4a),
+// which is only available when the Mux asset has MP4 support enabled. HLS is always
+// available for a public playback id and is what mux-player expects.
+function buildMuxHlsUrl(playbackId: string): string {
+  return `https://stream.mux.com/${playbackId}.m3u8`;
 }
 
 function buildOutputFileName(
@@ -722,7 +731,7 @@ async function processStory(storyId: string, options: CliOptions): Promise<Proce
   const muxPlaybackId = extractMuxPlaybackId(publishedVideoUrl);
   const finalPayload = {
     ...storyDetails.transcriptPayload,
-    videoURL: publishedVideoUrl,
+    videoURL: buildMuxHlsUrl(muxPlaybackId),
     mux_playback_id: muxPlaybackId,
   };
 
