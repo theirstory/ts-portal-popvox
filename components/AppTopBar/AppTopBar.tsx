@@ -9,6 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import { LogoArchive } from '@/app/assets/svg/LogoArchive';
 import { CarouselTopBar } from '../CarouselTopBar/CarouselTopBar';
 import useLayoutState from '@/app/stores/useLayout';
@@ -244,6 +245,15 @@ export const AppTopBar = () => {
                       COLLECTIONS
                     </Link>
                   )}
+                  <Box
+                    component="a"
+                    href="https://www.popvox.org/departure"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    FULL PROJECT
+                    <OpenInNewRoundedIcon sx={{ fontSize: 13 }} />
+                  </Box>
                   {isChatEnabled && (
                     <Box
                       component={Link}
@@ -429,6 +439,15 @@ export const AppTopBar = () => {
               COLLECTIONS
             </Box>
           )}
+          <Box
+            component="a"
+            href="https://www.popvox.org/departure"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={drawerLinkSx}>
+            FULL PROJECT
+            <OpenInNewRoundedIcon sx={{ fontSize: 18 }} />
+          </Box>
           {isChatEnabled && (
             <Box
               component={Link}
